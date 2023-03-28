@@ -28,13 +28,13 @@ export default function TextForm(props) {
         <div className="container mb-3" style={{color: props.mode==="light"?"black":"white"}}>
             <h1>{props.heading}</h1>
             <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor: props.mode==="dark"?"black":"white", color: props.mode==="light"?"black":"white"}} id="myBox" rows="8"></textarea>
-            <button className="btn btn-primary m-1" onClick={handleUpClick}>Uppercase</button>
-            <button className="btn btn-primary" onClick={handleLoClick}>Lowercase</button>
-            <button className="btn btn-primary m-1" onClick={handleClearClick}>Clear</button>
+            <button disabled={text.length===0} className="btn btn-primary m-1" onClick={handleUpClick}>Uppercase</button>
+            <button disabled={text.length===0} className="btn btn-primary" onClick={handleLoClick}>Lowercase</button>
+            <button disabled={text.length===0} className="btn btn-primary m-1" onClick={handleClearClick}>Clear</button>
         </div>
         <div className="container my-3" style={{color: props.mode==="light"?"black":"white"}} >
             <h1>Your text Summary</h1>
-            <p>Your total characters are {text.length} and words are {text.split(" ").length}</p>
+            <p>Your total characters are {text.length} and words are {text.split(" ").filter((element)=>{return element.length!==0}).length}</p>
         </div>
         </>
     )
